@@ -20,7 +20,7 @@ public class ProductManagerImp implements ProductManager{
 
     }
 
-    public void addProduct(String name, String description){
+    public void addProduct(String name, String description,List<Product> productList ){
 
     }
 
