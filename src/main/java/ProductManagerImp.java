@@ -1,4 +1,7 @@
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -17,8 +20,24 @@ public class ProductManagerImp implements ProductManager{
 
     public void addUser(String id, String name){    //faltan cosas
        //List<Pedido> empty=null;
-        User aux=new User(name, null);
-        users.put(id,aux);
+
+        /*Predicate condition = new Predicate() {
+            boolean evaluate(Object sample) {
+                return ((Sample)sample).value3.equals("three");
+            }
+        };*/
+        List <User> empty=new ArrayList<User>() ;;
+        List<User> result = userList.stream().filter(item -> item.name.equals(name)).collect(Collectors.toList());
+        if (result!=empty)
+        {
+            User aux=new User(name, null);
+            users.put(id,aux);
+        }
+        else
+        {
+            log.warn("The user " + name + " already exists" );
+        }
+
     }
 
     public void addProduct(String name, String description,double price,List<Product> productList ){
