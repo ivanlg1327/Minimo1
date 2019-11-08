@@ -1,26 +1,22 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 public class productManagerTest {
     ProductManagerImp pm = null;
     List<Product> productList;
     List<User> userList;
+    Queue<Order> orderQueue = new LinkedList<>();
 
     @Before
     public void setUp() {
-        pm = new ProductManagerImp(productList, userList);
+        pm = new ProductManagerImp(productList, userList, orderQueue);
         pm.addUser("11111", "Toni");
         pm.addUser("22222", "Ivan");
-        pm.addProduct("COCA-ZERO", "coca cola cero",productList);//mirar si tal como est montado nos rellena la lista
-        pm.addProduct("BOCATA", "Bocata jampn",productList);
+        pm.addProduct("COCA-ZERO", "coca cola cero",4.5,productList);//mirar si tal como est montado nos rellena la lista
+        pm.addProduct("BOCATA", "Bocata jampn",2,productList);
         Date date = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
-        Pedido p = new Pedido(productList, "Ivan", date);//aqui toca poner otra product list para que haga lo que toca
+        Order p = new Order(productList, "Ivan", date);//aqui toca poner otra product list para que haga lo que toca
         p.addLP(2, "COCA-ZERO");
         p.addLP(1, "BOCATA");
         p.addUSer("11111");//diferente este para decir que es para este usuario
@@ -37,7 +33,7 @@ public class productManagerTest {
     @Test
     public void anotarPedido() {
         Date date = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
-        Pedido p = new Pedido(productList, "Toni", date);
+        Order p = new Order(productList, "Toni", date);
         p.addLP(1, "COCA-ZERO");
         p.addLP(3, "BOCATA");
         p.addUSer("22222");
@@ -46,7 +42,7 @@ public class productManagerTest {
 
     @Test
     public void servirPedido() {
-        Pedido p1 = pm.listActive();
+        Order p1 = pm.listActive();
        // Assert.assertEquals("ServirPEdido", "Toni", p1.getUser());
 
     }

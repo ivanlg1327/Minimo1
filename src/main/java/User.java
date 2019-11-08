@@ -1,6 +1,11 @@
-import java.util.List;
+import java.util.*;
 
 public class User {
     String name;
-    List<Pedido> historical;
+    List<Order> historical;
+
+    public User(String name, List<Order> historical) {
+        this.name = name;
+        this.historical = historical;
+    }
 }

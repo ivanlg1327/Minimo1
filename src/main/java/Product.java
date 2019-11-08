@@ -2,6 +2,7 @@ public class Product implements Comparable<Product>{
     String name;
     double price;
     int count;
+    String description;
 
     public void setName(String name) {
         this.name = name;
@@ -28,10 +29,11 @@ public class Product implements Comparable<Product>{
     }
 
 
-    public Product(String name, double price, int count) {
+    public Product(String name, double price, int count, String description) {
         this.name = name;
         this.price = price;
         this.count = count;
+        this.description = description;
     }
 
     @Override
