@@ -7,12 +7,14 @@ public class Order {
     int cost=0;
     String name;
     Date date;
+    User user;
 
-    public Order(List<Product> productList, String name , Date date) {
+    public Order(List<Product> productList, String name , Date date, User user) {
         this.productList = productList;
         this.name=name;
         this.cost = this.count(productList);
         this.date=date;
+        this.user=user;
     }
 
     public List<Product> getProductList() {

@@ -9,4 +9,3 @@ public interface ProductManager {
     public List<Order> listUser(String idUser);// Listado de pedidos de un usuario que ya hayan sido realizados
     public List<Product> listSales();// Listado de productos ordenado (descendentemente) por número de ventas
 }
-   // Queue<Order> orderQueue = new LinkedList<>();

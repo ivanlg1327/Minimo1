@@ -8,28 +8,22 @@ import org.apache.log4j.Logger;
 
 public class ProductManagerImp implements ProductManager{
     private Logger log = LogManager.getLogger(ProductManagerImp.class);
-    List<Product> productList;
-    List<User> userList;
-    Queue<Order> orderQueue = new LinkedList<>();
-    public ProductManagerImp(List<Product> productList,List<User> userList,Queue<Order> orderQueue) {
+    private List<Product> productList;
+    private Queue<Order> orderQueue = new LinkedList<>();
+    private HashMap<String, User> users = new HashMap<String, User>();
+
+
+    public ProductManagerImp(List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
         this.productList = productList;
-        this.userList = userList;
+        this.users = users;
         this.orderQueue= orderQueue;
     }
-    HashMap<String, User> users = new HashMap<String, User>();
 
     public void addUser(String id, String name){    //se podria hacer más simple
-       //List<Pedido> empty=null;
 
-        /*Predicate condition = new Predicate() {
-            boolean evaluate(Object sample) {
-                return ((Sample)sample).value3.equals("three");
-            }
-        };*/
-        List <User> empty=new ArrayList<User>() ;;
-        List<User> result = userList.stream().filter(item -> item.name.equals(name)).collect(Collectors.toList());
+        User result=users.get(id);
         log.info(result);
-        if (result!=empty)
+        if (result!=null)
         {
             User aux=new User(name, null);
             users.put(id,aux);
@@ -61,12 +55,16 @@ public class ProductManagerImp implements ProductManager{
 
     @Override
     public void ped(Order order) {
-
+        orderQueue.add(order);
     }
 
     @Override
     public Order listActive() {
-        return null;
+        Order aux=orderQueue.poll();
+        String name=aux.name;
+        log.info(aux);
+        users.get(name);
+        return aux;
     }
 
     @Override
