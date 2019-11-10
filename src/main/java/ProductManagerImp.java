@@ -18,7 +18,7 @@ public class ProductManagerImp implements ProductManager{
     }
     HashMap<String, User> users = new HashMap<String, User>();
 
-    public void addUser(String id, String name){    //faltan cosas
+    public void addUser(String id, String name){    //se podria hacer más simple
        //List<Pedido> empty=null;
 
         /*Predicate condition = new Predicate() {
@@ -28,6 +28,7 @@ public class ProductManagerImp implements ProductManager{
         };*/
         List <User> empty=new ArrayList<User>() ;;
         List<User> result = userList.stream().filter(item -> item.name.equals(name)).collect(Collectors.toList());
+        log.info(result);
         if (result!=empty)
         {
             User aux=new User(name, null);
@@ -37,7 +38,6 @@ public class ProductManagerImp implements ProductManager{
         {
             log.warn("The user " + name + " already exists" );
         }
-
     }
 
     public void addProduct(String name, String description,double price,List<Product> productList ){
@@ -70,7 +70,7 @@ public class ProductManagerImp implements ProductManager{
     }
 
     @Override
-    public List<Order> listUsuario(String idUser) {
+    public List<Order> listUser(String idUser) {
         return null;
     }
 
