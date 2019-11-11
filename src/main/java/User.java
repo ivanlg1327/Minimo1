@@ -7,11 +7,11 @@ public class User {
 
     public User(String name, String id) {
         this.name = name;
-       // this.historical = historical;
+       this.historical = new LinkedList<>();
         this.id= id;
     }
 
-    public void setHistorical(Order order)
+    public void addHistorical(Order order)
     {
         this.historical.add(order);
     }

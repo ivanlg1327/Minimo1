@@ -3,35 +3,33 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 public class Order {
-    List <Product> productList;
-    double cost=0;
-    String name;
-    Date date;
-    User user;
+    private double cost=0;
+    private String name;
+    private Date date;
+    private List<LP> lps;
 
-    public Order(List<Product> productList, String name , Date date, User user) {
-        this.productList = productList;
+    public Order( String name , Date date) {
         this.name=name;
-        this.cost = this.count(productList);
         this.date=date;
-        this.user=user;
+        this.lps = new LinkedList<LP>();
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public List<LP> lps() {
+        return this.lps;
     }
 
     public double getCost() {//creo que ahora mismo no tiene utilidad
         return cost;
     }
 
-    public double count(List <Product> productList)
+/*    public double count(List <Product> productList)
     {
         double aux=0;
         for (Product temp : this.productList)
             aux=aux+temp.price;
         return aux;
-    }
+    } */
+
     public String getUser(){
         return this.name;
     }
@@ -40,9 +38,20 @@ public class Order {
     }
 
     public void addLP(int num, String name){
+        this.lps.add(new LP(num, name));
 
     }
     public String toString() {
         return this.name;
+    }
+
+    protected class LP {
+        int q;
+        String product;
+
+        public LP(int q, String product) {
+            this.q = q;
+            this.product =product;
+        }
     }
 }

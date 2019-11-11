@@ -8,13 +8,13 @@ import org.apache.log4j.Logger;
 public class ProductManagerImp implements ProductManager{
     private Logger log = LogManager.getLogger(ProductManagerImp.class);
     private List<Product> productList;
-    private Queue<Order> orderQueue = new LinkedList<>();
-    private HashMap<String, User> users = new HashMap<String, User>();
+    private Queue<Order> orderQueue = null;
+    private HashMap<String, User> users = null;
 
-    public ProductManagerImp(List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
-        this.productList = productList;
-        this.users = users;
-        this.orderQueue= orderQueue;
+    public ProductManagerImp() {// List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
+        this.productList = new LinkedList<>();
+        this.users = new HashMap<String, User>();;
+        this.orderQueue= new LinkedList<>();;
     }
 
     public void addUser(String id, String name){
@@ -33,10 +33,10 @@ public class ProductManagerImp implements ProductManager{
         }
     }
 
-    public void addProduct(String name, String description,double price,List<Product> productList ){
+    public void addProduct(String name, String description,double price ){
         Product temp = new Product(name, price,0, description);
-        productList.add(temp);//entra en bucle entre esta linea y el producto
-        log.info(productList);
+        this.productList.add(temp);//entra en bucle entre esta linea y el producto
+        log.info(this.productList);
     }
 
     @Override
@@ -60,10 +60,31 @@ public class ProductManagerImp implements ProductManager{
     @Override
     public Order listActive() {
         Order aux=orderQueue.poll();
-        String name=aux.name;
+
         log.info(aux);
-        users.get(name);
+        User user = users.get(aux.getUser());
+
+        int q;
+        String p;
+        Product product;
+        for (Order.LP lp: aux.lps()) {
+            q = lp.q;
+            p = lp.product;
+            product = this.getProduct(p);
+            product.numVendes(q);
+
+        }
+        user.addHistorical(aux);
+
         return aux;
+    }
+
+    public Product getProduct(String p) {
+        for (Product product : this.productList) {
+            if (product.name.equals(p)) return product;
+        }
+
+        return null;
     }
 
     @Override

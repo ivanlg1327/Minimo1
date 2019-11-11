@@ -43,4 +43,8 @@ public class Product implements Comparable<Product>{
     public String toString() {
         return this.name;
     }
+
+    public void numVendes(int q) {
+        this.count+= q;
+    }
 }
