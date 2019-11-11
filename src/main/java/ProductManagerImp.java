@@ -1,7 +1,6 @@
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -11,7 +10,6 @@ public class ProductManagerImp implements ProductManager{
     private List<Product> productList;
     private Queue<Order> orderQueue = new LinkedList<>();
     private HashMap<String, User> users = new HashMap<String, User>();
-
 
     public ProductManagerImp(List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
         this.productList = productList;
@@ -23,10 +21,12 @@ public class ProductManagerImp implements ProductManager{
 
         User result=users.get(id);
         log.info(result);
+        User aux;
         if (result!=null)
         {
-            User aux=new User(name, null);
+            aux=new User(name, id);
             users.put(id,aux);
+            log.info("The user "+ aux.name+" with id '"+aux.id+ "' has been added to the system");
         }
         else
         {
@@ -76,6 +76,5 @@ public class ProductManagerImp implements ProductManager{
     public List<Product> listSales() {
         return null;
     }
-
 
 }
