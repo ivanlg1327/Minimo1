@@ -18,6 +18,11 @@ public class ProductManagerImp implements ProductManager{
         this.users = new HashMap<String, User>();;
         this.orderQueue= new LinkedList<>();;
     }
+    @Override
+    public int size(){
+        int aux=this.productList.size();
+        return aux;
+    }
 
     public void addUser(String id, String name){
         User result=users.get(id);
@@ -40,7 +45,23 @@ public class ProductManagerImp implements ProductManager{
         this.productList.add(temp);//entra en bucle entre esta linea y el producto
         log.info(this.productList);
     }
+    @Override
+    public Product updateProduct( Product p){
+        Product t = this.getProduct(p.getName());
+        if (t!=null) {
+            log.info(p+" rebut!!!! ");
 
+            t.setName(p.getName());
+            t.setPrice(p.getPrice());
+
+            log.info(t+" updated ");
+        }
+        else {
+            log.warn("not found "+p);
+        }
+
+        return t;
+    }
     @Override
     public List<Product> listPrices()
     {
@@ -87,6 +108,16 @@ public class ProductManagerImp implements ProductManager{
         }
 
         return null;
+    }
+    @Override
+    public void deleteProduct(String name){
+        Product t = this.getProduct(name);
+        if (t==null) {
+            log.warn("not found " + t);
+        }
+        else log.info(t+" deleted ");
+
+        this.users.remove(t);
     }
 
     @Override
