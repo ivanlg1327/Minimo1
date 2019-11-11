@@ -17,10 +17,9 @@ public class ProductManagerImp implements ProductManager{
         this.orderQueue= orderQueue;
     }
 
-    public void addUser(String id, String name){    //se podria hacer más simple
-
+    public void addUser(String id, String name){
         User result=users.get(id);
-        log.info(result);
+        log.info(result);//debe aparecer vacio si no esta en la lista
         User aux;
         if (result==null)
         {
