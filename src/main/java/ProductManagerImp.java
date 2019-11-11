@@ -7,16 +7,16 @@ import org.apache.log4j.Logger;
 public class ProductManagerImp implements ProductManager{
     private Logger log = LogManager.getLogger(ProductManagerImp.class);
     private List<Product> productList;
-    private Queue<Order> orderQueue = null;
-    private HashMap<String, User> users = null;
+    private Queue<Order> orderQueue ;
+    private HashMap<String, User> users;
 
     private static ProductManagerImp instance = new ProductManagerImp();
 
     public static ProductManagerImp getInstance() {return instance;}
     public ProductManagerImp() {// List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
         this.productList = new LinkedList<>();
-        this.users = new HashMap<String, User>();;
-        this.orderQueue= new LinkedList<>();;
+        this.users = new HashMap<String, User>();
+        this.orderQueue= new LinkedList<>();
     }
     @Override
     public int size(){
@@ -77,16 +77,14 @@ public class ProductManagerImp implements ProductManager{
 
     @Override
     public void ped(Order order) {
-        orderQueue.add(order);
+        this.orderQueue.add(order);
     }
 
     @Override
     public Order listActive() {
-        Order aux=orderQueue.poll();
-
+        Order aux=this.orderQueue.poll();
         log.info(aux);
         User user = users.get(aux.getUser());
-
         int q;
         String p;
         Product product;
@@ -95,7 +93,6 @@ public class ProductManagerImp implements ProductManager{
             p = lp.product;
             product = this.getProduct(p);
             product.numVendes(q);
-
         }
         user.addHistorical(aux);
 
