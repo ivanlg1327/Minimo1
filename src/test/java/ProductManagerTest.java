@@ -44,7 +44,7 @@ public class ProductManagerTest {
         p.addLP(3, "BOCATA");
         pm.ped(p);
 
-
+        //para asegurar que al empezar esta todo a cero
         Assert.assertEquals("ServirPEdido", 0, pm.getProduct("BOCATA").getCount());
         Assert.assertEquals("ServirPEdido", 0, pm.getProduct("COCA-ZERO").getCount());
         //Assert.assertEquals("ServirPEdido", 2, pm.numOrders());
@@ -62,12 +62,13 @@ public class ProductManagerTest {
         Assert.assertEquals("ServirPEdido", 1, pm.getProduct("BOCATA").getCount());
         Assert.assertEquals("ServirPEdido", 2, pm.getProduct("COCA-ZERO").getCount());
 
+        //comprobar despues de primera comanda
 
 
         p1 = pm.listActive();
 
         Assert.assertEquals("ServirPEdido", 4, pm.getProduct("BOCATA").getCount());
         Assert.assertEquals("ServirPEdido", 3, pm.getProduct("COCA-ZERO").getCount());
-
+        //comprobar despues de segunda comanda
     }
 }

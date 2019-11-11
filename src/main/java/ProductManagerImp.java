@@ -1,6 +1,5 @@
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -11,6 +10,9 @@ public class ProductManagerImp implements ProductManager{
     private Queue<Order> orderQueue = null;
     private HashMap<String, User> users = null;
 
+    private static ProductManagerImp instance = new ProductManagerImp();
+
+    public static ProductManagerImp getInstance() {return instance;}
     public ProductManagerImp() {// List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
         this.productList = new LinkedList<>();
         this.users = new HashMap<String, User>();;
