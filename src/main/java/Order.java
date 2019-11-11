@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class Order {
     List <Product> productList;
-    int cost=0;
+    double cost=0;
     String name;
     Date date;
     User user;
@@ -21,13 +21,16 @@ public class Order {
         return productList;
     }
 
-    public int getCost() {
+    public double getCost() {//creo que ahora mismo no tiene utilidad
         return cost;
     }
 
-    public int count(List <Product> productList)
+    public double count(List <Product> productList)
     {
-        return 1;
+        double aux=0;
+        for (Product temp : this.productList)
+            aux=aux+temp.price;
+        return aux;
     }
     public String getUser(){
         return this.name;
@@ -38,5 +41,8 @@ public class Order {
 
     public void addLP(int num, String name){
 
+    }
+    public String toString() {
+        return this.name;
     }
 }

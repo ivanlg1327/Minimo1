@@ -1,11 +1,12 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
 public class productManagerTest {
     ProductManagerImp pm = null;
-    List<Product> productList;
-    List<Product> productsUser;
+    List<Product> productList= new LinkedList<>();;
+    List<Product> productsUser=new LinkedList<>();;
     HashMap<String, User> users = new HashMap<String, User>();
     Queue<Order> orderQueue = new LinkedList<>();
 
@@ -14,7 +15,6 @@ public class productManagerTest {
         pm = new ProductManagerImp(productList, users, orderQueue);
         pm.addUser("11111", "Toni");
         pm.addUser("22222", "Ivan");
-        User temp=new User("Ivan", "22222");
         pm.addProduct("COCA-ZERO", "coca cola cero",4.5,productList);
         pm.addProduct("BOCATA", "Bocata jampn",2,productList);
         Date date = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
@@ -33,8 +33,7 @@ public class productManagerTest {
     @Test
     public void anotarPedido() {
         Date date = new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
-        User temp=new User("Toni", "11111");
-        Order p = new Order(productList, "Toni", date, temp);
+        Order p = new Order(productList, "Toni", date, users.get("11111"));
         p.addLP(1, "COCA-ZERO");
         p.addLP(3, "BOCATA");
         p.addUSer("22222");
@@ -44,7 +43,7 @@ public class productManagerTest {
     @Test
     public void servirPedido() {
         Order p1 = pm.listActive();
-       // Assert.assertEquals("ServirPEdido", "Toni", p1.getUser());
+      //  Assert.assertEquals("ServirPEdido", "Toni", p1.getUser());
 
     }
 }

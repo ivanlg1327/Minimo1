@@ -22,7 +22,7 @@ public class ProductManagerImp implements ProductManager{
         User result=users.get(id);
         log.info(result);
         User aux;
-        if (result!=null)
+        if (result==null)
         {
             aux=new User(name, id);
             users.put(id,aux);
@@ -36,7 +36,7 @@ public class ProductManagerImp implements ProductManager{
 
     public void addProduct(String name, String description,double price,List<Product> productList ){
         Product temp = new Product(name, price,0, description);
-        productList.add(temp);
+        productList.add(temp);//entra en bucle entre esta linea y el producto
         log.info(productList);
     }
 

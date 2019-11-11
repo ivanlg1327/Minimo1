@@ -40,4 +40,7 @@ public class Product implements Comparable<Product>{
     public int compareTo(Product e2) {
         return this.name.compareTo(e2.name);
     }
+    public String toString() {
+        return this.name;
+    }
 }
