@@ -18,8 +18,8 @@ import java.util.List;
 
 
 
-@Api(value = "/tracks", description = "Endpoint to Track Service")
-@Path("/tracks")
+@Api(value = "/products", description = "Endpoint to Product Service")
+@Path("/products")
 public class  ProductService {
 
 
@@ -35,13 +35,13 @@ public class  ProductService {
     }
 
     @GET
-    @ApiOperation(value = "get all Track", notes = "asdasd")
+    @ApiOperation(value = "get all products", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response = Product.class, responseContainer="List"),
     })
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTracks() {
+    public Response getProducts() {
 
         List<Product> products = this.tm.listPrices();
 
@@ -51,27 +51,27 @@ public class  ProductService {
     }
 
     @GET
-    @ApiOperation(value = "get a Track", notes = "asdasd")
+    @ApiOperation(value = "get a Product", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response = Product.class),
-            @ApiResponse(code = 404, message = "Track not found")
+            @ApiResponse(code = 404, message = "Product not found")
     })
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTrack(@PathParam("id") String id) {
+    public Response getProduct(@PathParam("id") String id) {
         Product t = this.tm.getProduct(id);
         if (t == null) return Response.status(404).build();
         else  return Response.status(201).entity(t).build();
     }
 
     @DELETE
-    @ApiOperation(value = "delete a Track", notes = "asdasd")
+    @ApiOperation(value = "delete a Product", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful"),
-            @ApiResponse(code = 404, message = "Track not found")
+            @ApiResponse(code = 404, message = "Product not found")
     })
     @Path("/{id}")
-    public Response deleteTrack(@PathParam("id") String id) {
+    public Response deleteProduct(@PathParam("id") String id) {
         Product t = this.tm.getProduct(id);
         if (t == null) return Response.status(404).build();
         else this.tm.deleteProduct(id);
@@ -79,13 +79,13 @@ public class  ProductService {
     }
 
     @PUT
-    @ApiOperation(value = "update a Track", notes = "asdasd")
+    @ApiOperation(value = "update a Product", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful"),
-            @ApiResponse(code = 404, message = "Track not found")
+            @ApiResponse(code = 404, message = "Product not found")
     })
     @Path("/")
-    public Response updateTrack(Product product) {
+    public Response updateProduct(Product product) {
 
         Product t = this.tm.updateProduct(product);
 
@@ -97,7 +97,7 @@ public class  ProductService {
 
 
     @POST
-    @ApiOperation(value = "create a new Track", notes = "asdasd")
+    @ApiOperation(value = "create a new Product", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response=Product.class),
             @ApiResponse(code = 500, message = "Validation Error")
@@ -106,7 +106,7 @@ public class  ProductService {
 
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response newTrack(Product product) {
+    public Response newProduct(Product product) {
 
         if (product.getName()==null || product.getPrice()==0)  return Response.status(500).entity(product).build();
         this.tm.addProduct(product.name, product.description, product.price);
