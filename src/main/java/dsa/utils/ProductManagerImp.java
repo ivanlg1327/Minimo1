@@ -20,7 +20,7 @@ public class ProductManagerImp implements ProductManager{
     public static ProductManagerImp getInstance() {return instance;}
     public ProductManagerImp() {// List<dsa.models.Product> productList, HashMap<String, dsa.models.User> users,Queue<dsa.models.Order> orderQueue) {
         this.productList = new LinkedList<>();
-        this.users = new HashMap<String, User>();
+        this.users = new HashMap<>();
         this.orderQueue= new LinkedList<>();
     }
     @Override

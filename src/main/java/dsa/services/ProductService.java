@@ -2,7 +2,7 @@ package dsa.services;
 
 import dsa.models.Product;
 import dsa.utils.ProductManager;
-import dsa.utils.ProductManagerImp;
+import dsa.utils.ProductManagerImp;// hasta aqui serian los packages propios de nuestro proyecto
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -29,13 +29,13 @@ public class  ProductService {
         this.tm = ProductManagerImp.getInstance();
         if (tm.size()==0) {
             this.tm.addProduct("La Barbacoa", "Georgie Dann", 3);
-            this.tm.addProduct("Despacito", "Luis Fonsi", 3);
-            this.tm.addProduct("Enter Sandman", "Metallica", 3);
+            this.tm.addProduct("Despacito", "Basura", 2);
+            this.tm.addProduct("Enter Sandman", "Metallica", 5);
         }
     }
 
     @GET
-    @ApiOperation(value = "get all products", notes = "asdasd")
+    @ApiOperation(value = "get all products", notes = "Here we see all the products that we have available")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response = Product.class, responseContainer="List"),
     })
@@ -51,7 +51,7 @@ public class  ProductService {
     }
 
     @GET
-    @ApiOperation(value = "get a Product", notes = "asdasd")
+    @ApiOperation(value = "get a Product", notes = "We look for an specific product")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response = Product.class),
             @ApiResponse(code = 404, message = "Product not found")
@@ -65,7 +65,7 @@ public class  ProductService {
     }
 
     @DELETE
-    @ApiOperation(value = "delete a Product", notes = "asdasd")
+    @ApiOperation(value = "delete a Product", notes = "We eliminate a product because it is exhausted")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful"),
             @ApiResponse(code = 404, message = "Product not found")
@@ -79,7 +79,7 @@ public class  ProductService {
     }
 
     @PUT
-    @ApiOperation(value = "update a Product", notes = "asdasd")
+    @ApiOperation(value = "update a Product", notes = "We have a new offer")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful"),
             @ApiResponse(code = 404, message = "Product not found")
@@ -97,7 +97,7 @@ public class  ProductService {
 
 
     @POST
-    @ApiOperation(value = "create a new Product", notes = "asdasd")
+    @ApiOperation(value = "create a new Product", notes = "We have a brand new product")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response=Product.class),
             @ApiResponse(code = 500, message = "Validation Error")

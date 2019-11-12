@@ -26,7 +26,7 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in edu.upc.dsa package
-        final ResourceConfig rc = new ResourceConfig().packages("dsa.services");// funciona?
+        final ResourceConfig rc = new ResourceConfig().packages("dsa.services");//aqui se mete el package donde se encuentran los archivos de la api rest
 
         rc.register(io.swagger.jaxrs.listing.ApiListingResource.class);
         rc.register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
