@@ -72,7 +72,7 @@ public class ProductManagerTest {
 
         Assert.assertEquals("ServirPEdido", 4, this.pm.getProduct("BOCATA").getCount());
         Assert.assertEquals("ServirPEdido", 3, this.pm.getProduct("COCA-ZERO").getCount());
-
+        this.pm.clear();
         //comprobar despues de segunda comanda
     }
 }

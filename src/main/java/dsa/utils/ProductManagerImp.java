@@ -25,6 +25,7 @@ public class ProductManagerImp implements ProductManager{
         }
         return instance;
     }
+
     public ProductManagerImp() {// List<dsa.models.Product> productList, HashMap<String, dsa.models.User> users,Queue<dsa.models.Order> orderQueue) {
         this.productList = new LinkedList<>();
         this.users = new HashMap<>();
@@ -35,7 +36,7 @@ public class ProductManagerImp implements ProductManager{
         int aux=this.productList.size();
         return aux;
     }
-
+    @Override
     public void addUser(String id, String name){
         User result=users.get(id);
         log.info(result);//debe aparecer vacio si no esta en la lista
@@ -51,7 +52,7 @@ public class ProductManagerImp implements ProductManager{
             log.warn("The user " + name + " already exists" );
         }
     }
-
+    @Override
     public void addProduct(String name, String description,double price ){
         Product temp = new Product(name, price,0, description);
         this.productList.add(temp);//entra en bucle entre esta linea y el producto
@@ -110,7 +111,7 @@ public class ProductManagerImp implements ProductManager{
 
         return aux;
     }
-
+    @Override
     public Product getProduct(String p) {
         for (Product product : this.productList) {
             if (product.name.equals(p)) return product;
@@ -127,6 +128,13 @@ public class ProductManagerImp implements ProductManager{
         else log.info(t+" deleted ");
 
         this.productList.remove(t);
+    }
+    @Override
+    public void clear(){
+        instance = null;
+        this.productList.clear();
+        this.orderQueue.clear();
+        users.clear();
     }
 
     @Override

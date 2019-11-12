@@ -8,6 +8,7 @@ import java.util.List;
 public interface ProductManager {
     public void addUser(String id, String name);
     public int size();
+    public void clear();
     public Product updateProduct( Product p);//put
     public void addProduct(String name, String description,double price );//post
     public Product getProduct(String p);//get
