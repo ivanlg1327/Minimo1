@@ -46,7 +46,7 @@ public class  ProductService {
         List<Product> products = this.tm.listPrices();
 
         GenericEntity<List<Product>> entity = new GenericEntity<List<Product>>(products) {};
-        return Response.status(201).entity(entity).build()  ;
+        return Response.status(201).entity(entity).build() ;
 
     }
 

@@ -76,8 +76,8 @@ public class ProductManagerImp implements ProductManager{
                 return ((int)(product.price-t1.price));
             }
         });
-        log.info(productList);
-        return productList;
+        log.info(this.productList);
+        return this.productList;
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ProductManagerImp implements ProductManager{
         }
         else log.info(t+" deleted ");
 
-        this.users.remove(t);
+        this.productList.remove(t);
     }
 
     @Override
