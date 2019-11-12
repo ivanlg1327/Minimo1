@@ -6,10 +6,16 @@ public class Product implements Comparable<Product>{
     public int count;
     public String description;
 
-    public Product() {
+    public Product() {//necesario para que la api rest funcione
 
     }
 
+    public Product(String name, double price, int count, String description) {
+        this.name = name;
+        this.price = price;
+        this.count = count;
+        this.description = description;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -32,14 +38,6 @@ public class Product implements Comparable<Product>{
 
     public int getCount() {
         return count;
-    }
-
-
-    public Product(String name, double price, int count, String description) {
-        this.name = name;
-        this.price = price;
-        this.count = count;
-        this.description = description;
     }
 
     @Override
