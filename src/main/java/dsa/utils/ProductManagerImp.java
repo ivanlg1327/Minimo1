@@ -17,7 +17,14 @@ public class ProductManagerImp implements ProductManager{
 
     private static ProductManagerImp instance = new ProductManagerImp();
 
-    public static ProductManagerImp getInstance() {return instance;}
+    public static ProductManagerImp getInstance()
+    {
+        if(instance==null)
+        {
+            instance = new ProductManagerImp();
+        }
+        return instance;
+    }
     public ProductManagerImp() {// List<dsa.models.Product> productList, HashMap<String, dsa.models.User> users,Queue<dsa.models.Order> orderQueue) {
         this.productList = new LinkedList<>();
         this.users = new HashMap<>();
