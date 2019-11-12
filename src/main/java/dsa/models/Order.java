@@ -1,3 +1,5 @@
+package dsa.models;
+
 import java.util.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -22,10 +24,10 @@ public class Order {
         return cost;
     }
 
-/*    public double count(List <Product> productList)
+/*    public double count(List <dsa.models.Product> productList)
     {
         double aux=0;
-        for (Product temp : this.productList)
+        for (dsa.models.Product temp : this.productList)
             aux=aux+temp.price;
         return aux;
     } */
@@ -45,9 +47,9 @@ public class Order {
         return this.name;
     }
 
-    protected class LP {
-        int q;
-        String product;
+   public class LP {
+        public int q;
+        public String product;
 
         public LP(int q, String product) {
             this.q = q;

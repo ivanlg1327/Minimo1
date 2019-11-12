@@ -1,3 +1,5 @@
+package dsa.utils;
+
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jersey.listing.ApiListingResourceJSON;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -9,12 +11,13 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- * Main class.
+ * dsa.utils.Main class.
  *
  */
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
     public static final String BASE_URI = "http://localhost:8080/dsaApp/";
+
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
@@ -23,7 +26,7 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in edu.upc.dsa package
-        final ResourceConfig rc = new ResourceConfig().packages();// funciona?
+        final ResourceConfig rc = new ResourceConfig().packages("dsa.services");// funciona?
 
         rc.register(io.swagger.jaxrs.listing.ApiListingResource.class);
         rc.register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
@@ -35,7 +38,7 @@ public class Main {
         beanConfig.setContact("support@example.com");
         beanConfig.setDescription("REST API for Tracks Manager");
         beanConfig.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
-        beanConfig.setResourcePackage("edu.upc.dsa.services");
+        beanConfig.setResourcePackage("dsa.services");
         beanConfig.setTermsOfServiceUrl("http://www.example.com/resources/eula");
         beanConfig.setTitle("REST API");
         beanConfig.setVersion("1.0.0");
@@ -48,7 +51,7 @@ public class Main {
 
 
     /**
-     * Main method.
+     * dsa.utils.Main method.
      * @param args
      * @throws IOException
      */

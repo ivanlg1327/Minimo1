@@ -1,13 +1,15 @@
+package dsa.models;
+
 import java.util.*;
 
 public class User {
-    String name;
-    String id;
+    public String name;
+    public String id;
     List<Order> historical;
 
     public User(String name, String id) {
         this.name = name;
-       this.historical = new LinkedList<>();
+        this.historical = new LinkedList<>();
         this.id= id;
     }
 

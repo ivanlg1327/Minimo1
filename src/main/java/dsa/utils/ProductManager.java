@@ -1,6 +1,9 @@
-import java.util.LinkedList;
+package dsa.utils;
+
+import dsa.models.Order;
+import dsa.models.Product;
+
 import java.util.List;
-import java.util.Queue;
 
 public interface ProductManager {
     public void addUser(String id, String name);

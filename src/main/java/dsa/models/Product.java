@@ -1,8 +1,14 @@
+package dsa.models;
+
 public class Product implements Comparable<Product>{
-    String name;
-    double price;
-    int count;
-    String description;
+    public String name;
+    public double price;
+    public int count;
+    public String description;
+
+    public Product() {
+
+    }
 
     public void setName(String name) {
         this.name = name;

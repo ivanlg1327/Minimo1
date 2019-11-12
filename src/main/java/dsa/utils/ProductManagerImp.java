@@ -1,5 +1,10 @@
+package dsa.utils;
+
 import java.util.*;
 
+import dsa.models.Order;
+import dsa.models.Product;
+import dsa.models.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -13,7 +18,7 @@ public class ProductManagerImp implements ProductManager{
     private static ProductManagerImp instance = new ProductManagerImp();
 
     public static ProductManagerImp getInstance() {return instance;}
-    public ProductManagerImp() {// List<Product> productList, HashMap<String, User> users,Queue<Order> orderQueue) {
+    public ProductManagerImp() {// List<dsa.models.Product> productList, HashMap<String, dsa.models.User> users,Queue<dsa.models.Order> orderQueue) {
         this.productList = new LinkedList<>();
         this.users = new HashMap<String, User>();
         this.orderQueue= new LinkedList<>();

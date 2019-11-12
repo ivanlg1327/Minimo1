@@ -1,3 +1,8 @@
+package dsa.services;
+
+import dsa.models.Product;
+import dsa.utils.ProductManager;
+import dsa.utils.ProductManagerImp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -9,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-//import ProductManager;
+//import dsa.utils.ProductManager;
 
 
 
@@ -32,7 +37,7 @@ public class  ProductService {
     @GET
     @ApiOperation(value = "get all Track", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Successful", response =Product.class, responseContainer="List"),
+            @ApiResponse(code = 201, message = "Successful", response = Product.class, responseContainer="List"),
     })
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
