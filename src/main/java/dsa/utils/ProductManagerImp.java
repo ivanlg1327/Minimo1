@@ -107,7 +107,10 @@ public class ProductManagerImp implements ProductManager{
             product = this.getProduct(p);
             product.numVendes(q);
         }
-        user.addHistorical(aux);
+        if (user!=null) {
+            user.addHistorical(aux);
+        }
+        else log.error("user no exiteix"+user);
 
         return aux;
     }
@@ -116,7 +119,6 @@ public class ProductManagerImp implements ProductManager{
         for (Product product : this.productList) {
             if (product.name.equals(p)) return product;
         }
-
         return null;
     }
     @Override

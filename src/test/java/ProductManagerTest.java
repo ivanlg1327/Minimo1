@@ -1,6 +1,7 @@
 import dsa.models.Order;
 import dsa.utils.ProductManager;
 import dsa.utils.ProductManagerImp;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,11 @@ public class ProductManagerTest {
         p.addLP(2, "COCA-ZERO");
         p.addLP(1, "BOCATA");
         this.pm.ped(p);
+    }
+
+    @After
+    public void tearDown() {
+        this.pm.clear();
     }
 
     @Test
@@ -72,7 +78,6 @@ public class ProductManagerTest {
 
         Assert.assertEquals("ServirPEdido", 4, this.pm.getProduct("BOCATA").getCount());
         Assert.assertEquals("ServirPEdido", 3, this.pm.getProduct("COCA-ZERO").getCount());
-        this.pm.clear();
         //comprobar despues de segunda comanda
     }
 }
